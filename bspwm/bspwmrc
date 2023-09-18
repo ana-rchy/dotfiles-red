@@ -1,0 +1,29 @@
+#! /bin/bash
+xrandr --output DP-2 --primary --mode 1920x1080 --rate 239.96 --output DP-4 --mode 1920x1080 --rate 144 --right-of DP-2
+setxkbmap gb
+/usr/lib/polkit-kde-authentication-agent-1 &
+
+/home/ana/.config/polybar/launch.sh &
+picom &
+sxhkd &
+
+ckb-next -b &
+fcitx5 &
+
+
+bspc monitor DP-2 -d o n e s h o t n i k o
+bspc monitor DP-4 -d 'w​' 'o​' 'a​' 'h​'
+
+bspc config border_width        0
+bspc config window_gap          12
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a state=floating follow=on
+bspc rule -a Firefox desktop='^2'
+bspc rule -a kitty border=off
+
+
+feh --bg-fill /home/ana/media/pictures/wallpapers/refuge_extended.png
+#xwinwrap -fs -fdt -ni -b -nf -- mpv --keep-open=no --really-quiet --loop --no-audio --wid=%WID "/home/ana/media/pictures/oneshot/refuge_extended.gif"
